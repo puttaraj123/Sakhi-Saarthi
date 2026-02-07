@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Login | SakhiSaarthi</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <h1 id="title">SakhiSaarthi</h1>
+<h2>Admin Login</h2>
+<button onclick="setLanguage('en')">English</button>
+    <button onclick="setLanguage('kn')">ಕನ್ನಡ</button>
+{% if error %}
+<p style="color:red;">{{ error }}</p>
+{% endif %}
+
+<form method="POST">
+    <label>Username</label><br>
+    <input type="text" name="username" required><br><br>
+
+    <label>Password</label><br>
+    <input type="password" name="password" required><br><br>
+
+    <button type="submit">Login</button>
+</form>
+<footer>
+    <p>© 2026 SakhiSaarthi | Admin Panel</p>
+</footer>
+
+<!-- LANGUAGE SCRIPT -->
+<script>
+const subtitles = {
+    en: "Admin Login",
+    kn: "ನಿರ್ವಹಣಾಧಿಕಾರಿ ಲಾಗಿನ್"
+};
+
+const pageTitles = {
+    en: "Administrator Login",
+    kn: "ನಿರ್ವಹಣಾಧಿಕಾರಿ ಪ್ರವೇಶ"
+};
+
+const pageDescs = {
+    en: "Authorized officials can log in to manage complaints, schemes, and welfare data.",
+    kn: "ಅಧಿಕೃತ ಅಧಿಕಾರಿಗಳು ದೂರುಗಳು, ಯೋಜನೆಗಳು ಮತ್ತು ಕಲ್ಯಾಣ ಮಾಹಿತಿಯನ್ನು ನಿರ್ವಹಿಸಲು ಲಾಗಿನ್ ಮಾಡಬಹುದು."
+};
+
+const labels = {
+    en: {
+        user: "Username",
+        pass: "Password",
+        btn: "Login"
+    },
+    kn: {
+        user: "ಬಳಕೆದಾರ ಹೆಸರು",
+        pass: "ಪಾಸ್‌ವರ್ಡ್",
+        btn: "ಲಾಗಿನ್"
+    }
+};
+
+function setLanguage(lang) {
+    document.getElementById("title").innerText =
+        lang === "kn" ? "ಸಖಿ ಸಾರಥಿ" : "SakhiSaarthi";
+
+    document.getElementById("subtitle").innerText = subtitles[lang];
+    document.getElementById("pageTitle").innerText = pageTitles[lang];
+    document.getElementById("pageDesc").innerText = pageDescs[lang];
+
+    document.getElementById("userLabel").innerText = labels[lang].user;
+    document.getElementById("passLabel").innerText = labels[lang].pass;
+    document.getElementById("loginBtn").innerText = labels[lang].btn;
+}
+</script>
+
+</body>
+</html>

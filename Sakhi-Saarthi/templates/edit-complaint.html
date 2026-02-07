@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Complaint</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<h2>Edit Complaint Status</h2>
+
+<form method="POST" action="/edit_complaint/{{ complaint.id }}">
+    <label>Status</label>
+    <select name="status">
+        <option value="Pending" {{ 'selected' if complaint.status=='Pending' }}>Pending</option>
+        <option value="In Progress" {{ 'selected' if complaint.status=='In Progress' }}>In Progress</option>
+        <option value="Resolved" {{ 'selected' if complaint.status=='Resolved' }}>Resolved</option>
+    </select>
+
+    <br><br>
+    <button type="submit">Update Status</button>
+</form>
+
+<br>
+<a href="/complaints">⬅ Back to Complaints</a>
+
+</body>
+</html>

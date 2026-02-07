@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Anganwadi</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<h2>Edit Anganwadi Center</h2>
+
+<form method="POST" action="/edit_anganwadi/{{ center.id }}">
+    <label>Center Name</label><br>
+    <input type="text" name="center_name" value="{{ center.center_name }}"><br><br>
+
+    <label>Location</label><br>
+    <input type="text" name="location" value="{{ center.location }}"><br><br>
+
+    <label>Worker Name</label><br>
+    <input type="text" name="worker_name" value="{{ center.worker_name }}"><br><br>
+
+    <label>Contact</label><br>
+    <input type="text" name="contact" value="{{ center.contact }}"><br><br>
+
+    <button type="submit">Update</button>
+</form>
+
+<br>
+<a href="/anganwadi">⬅ Back to Anganwadi</a>
+
+</body>
+</html>

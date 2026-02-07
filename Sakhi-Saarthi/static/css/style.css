@@ -1,0 +1,149 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* BODY */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #F4E1C1;
+    color: #333;
+}
+
+/* HEADER */
+header {
+    background-color: #8E2C2C;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+header h1 {
+    font-size: 30px;
+}
+
+header p {
+    font-size: 16px;
+    margin-top: 5px;
+}
+
+/* NAVBAR */
+nav {
+    background-color: #D4AF37;
+    text-align: center;
+    padding: 10px;
+}
+
+nav a {
+    margin: 10px;
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+}
+
+nav button {
+    padding: 5px 10px;
+    margin-left: 10px;
+    background-color: #8E2C2C;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+nav button:hover {
+    background-color: #6f2222;
+}
+
+/* HERO SECTION */
+.hero {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.hero h2 {
+    margin-bottom: 10px;
+}
+
+/* CARDS */
+.cards {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.card {
+    background-color: white;
+    width: 25%;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+    text-align: center;
+}
+
+/* TABLES */
+table {
+    width: 90%;
+    margin: auto;
+    background-color: white;
+    border-collapse: collapse;
+}
+
+th {
+    background-color: #8E2C2C;
+    color: white;
+    padding: 10px;
+}
+
+td {
+    padding: 10px;
+    text-align: center;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* FORMS */
+form {
+    max-width: 400px;
+    margin: auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+label {
+    font-weight: bold;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+/* BUTTONS */
+button {
+    background-color: #8E2C2C;
+    color: white;
+    padding: 10px;
+    border: none;
+    width: 100%;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #6f2222;
+}
+
+/* FOOTER */
+footer {
+    background-color: #8E2C2C;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    margin-top: 20px;
+}

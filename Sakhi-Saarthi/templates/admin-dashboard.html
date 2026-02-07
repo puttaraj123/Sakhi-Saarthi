@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard | SakhiSaarthi</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        .dashboard {
+            display: flex;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .card {
+            flex: 1;
+            padding: 30px;
+            background: #f5f5f5;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .card h2 {
+            font-size: 40px;
+            color: #b30059;
+        }
+        .card p {
+            font-size: 18px;
+            margin-top: 10px;
+        }
+
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+<body>
+
+<body>
+
+<h1 id="title">Admin Dashboard</h1>
+
+<nav style="margin-bottom:20px;">
+    <a href="/dashboard" id="navDashboard">Dashboard</a> |
+    <a href="/schemes" id="navSchemes">Schemes</a> |
+    <a href="/complaints" id="navComplaints">Complaints</a> |
+    <a href="/anganwadi" id="navAnganwadi">Anganwadi</a>
+</nav>
+
+<button onclick="setLanguage('en')">English</button>
+<button onclick="setLanguage('kn')">ಕನ್ನಡ</button>
+
+<div class="dashboard">
+
+    <div class="card">
+        <h2>{{ schemes }}</h2>
+        <p id="schemesText">Total Schemes</p>
+    </div>
+
+    <div class="card">
+        <h2>{{ complaints }}</h2>
+        <p id="complaintsText">Total Complaints</p>
+    </div>
+
+    <div class="card">
+        <h2>{{ anganwadi }}</h2>
+        <p id="anganwadiText">Total Anganwadi Centers</p>
+    </div>
+<h2 style="margin-top:40px;">Statistics Overview</h2>
+
+<div style="width:500px; height:300px; margin:auto;">
+    <canvas id="dashboardChart"></canvas>
+</div>
+
+
+<h2 style="margin-top:40px;">Distribution Overview</h2>
+
+<div style="width:220px; height:220px; margin:auto;">
+    <canvas id="pieChart"></canvas>
+</div>
+
+
+
+</div>
+
+<script>
+const langData = {
+    en: {
+        title: "Admin Dashboard",
+        schemes: "Total Schemes",
+        complaints: "Total Complaints",
+        anganwadi: "Total Anganwadi Centers",
+        nav: {
+            dashboard: "Dashboard",
+            schemes: "Schemes",
+            complaints: "Complaints",
+            anganwadi: "Anganwadi"
+        }
+    },
+    kn: {
+        title: "ನಿರ್ವಹಣಾ ಡ್ಯಾಶ್‌ಬೋರ್ಡ್",
+        schemes: "ಒಟ್ಟು ಯೋಜನೆಗಳು",
+        complaints: "ಒಟ್ಟು ದೂರುಗಳು",
+        anganwadi: "ಒಟ್ಟು ಅಂಗನವಾಡಿ ಕೇಂದ್ರಗಳು",
+        nav: {
+            dashboard: "ಡ್ಯಾಶ್‌ಬೋರ್ಡ್",
+            schemes: "ಯೋಜನೆಗಳು",
+            complaints: "ದೂರುಗಳು",
+            anganwadi: "ಅಂಗನವಾಡಿ"
+        }
+    }
+};
+
+function setLanguage(lang) {
+    document.getElementById("title").innerText = langData[lang].title;
+    document.getElementById("schemesText").innerText = langData[lang].schemes;
+    document.getElementById("complaintsText").innerText = langData[lang].complaints;
+    document.getElementById("anganwadiText").innerText = langData[lang].anganwadi;
+
+    document.getElementById("navDashboard").innerText = langData[lang].nav.dashboard;
+    document.getElementById("navSchemes").innerText = langData[lang].nav.schemes;
+    document.getElementById("navComplaints").innerText = langData[lang].nav.complaints;
+    document.getElementById("navAnganwadi").innerText = langData[lang].nav.anganwadi;
+}
+</script>
+
+<script>
+const ctx = document.getElementById('dashboardChart').getContext('2d');
+
+const dashboardChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['Schemes', 'Complaints', 'Anganwadi'],
+        datasets: [{
+            label: 'Total Count',
+            data: [
+                {{ schemes }},
+                {{ complaints }},
+                {{ anganwadi }}
+            ],
+            backgroundColor: [
+                'rgba(179, 0, 89, 0.7)',
+                'rgba(0, 123, 255, 0.7)',
+                'rgba(40, 167, 69, 0.7)'
+            ],
+            borderColor: [
+                'rgba(179, 0, 89, 1)',
+                'rgba(0, 123, 255, 1)',
+                'rgba(40, 167, 69, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        responsive: true,
+        scales: {
+            y: {
+                beginAtZero: true,
+                ticks: {
+                    stepSize: 1
+                }
+            }
+        }
+    }
+});
+</script>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const canvas = document.getElementById("pieChart");
+    if (!canvas) {
+        console.log("Pie canvas not found");
+        return;
+    }
+
+    new Chart(canvas, {
+        type: 'pie',
+        data: {
+            labels: ['Schemes', 'Complaints', 'Anganwadi'],
+            datasets: [{
+                data: [
+                    {{ schemes }},
+                    {{ complaints }},
+                    {{ anganwadi }}
+                ],
+                backgroundColor: ['#b30059', '#007bff', '#28a745']
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false
+        }
+    });
+});
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<canvas id="barChart"></canvas>
+<canvas id="pieChart"></canvas>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  new Chart(document.getElementById("barChart"), {
+    type: "bar",
+    data: {
+      labels: ["Women", "Children", "Anganwadi"],
+      datasets: [{
+        label: "Module Usage",
+        data: [60, 25, 15]
+      }]
+    }
+  });
+
+  new Chart(document.getElementById("pieChart"), {
+    type: "pie",
+    data: {
+      labels: ["Schemes", "Education", "Helplines"],
+      datasets: [{
+        data: [45, 35, 20]
+      }]
+    }
+  });
+});
+</script>
+
+</body>
+
+
+</html>

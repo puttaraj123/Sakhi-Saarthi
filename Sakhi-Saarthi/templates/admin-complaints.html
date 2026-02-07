@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Complaints Management</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
+
+</head>
+<body>
+
+<h2>Complaints Management</h2>
+
+
+
+<!-- ADD COMPLAINT -->
+<form method="POST" action="/complaints">
+    <input type="text" name="name" placeholder="Complainant Name" required>
+    <input type="text" name="type" placeholder="Complaint Type" required>
+    <textarea name="description" placeholder="Description" required></textarea>
+    <button type="submit">Add Complaint</button>
+</form>
+
+<hr>
+
+<!-- COMPLAINTS TABLE -->
+<table border="1" cellpadding="10">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Status</th>
+        <th>Action</th>
+    </tr>
+
+    {% for c in complaints %}
+    <tr>
+        <td>{{ c.id }}</td>
+        <td>{{ c.name }}</td>
+        <td>{{ c.type }}</td>
+        <td>{{ c.description }}</td>
+        <td>{{ c.status }}</td>
+        <td>
+            <a href="/edit_complaint/{{ c.id }}">Edit</a> |
+            <a href="/delete_complaint/{{ c.id }}">Delete</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+<script>
+const langData = {
+    en: {
+        title: "Complaints Management",
+        name: "Name",
+        type: "Complaint Type",
+        desc: "Description",
+        add: "Submit Complaint",
+        table: {
+            id: "ID",
+            name: "Name",
+            type: "Type",
+            desc: "Description",
+            status: "Status",
+            action: "Action"
+        },
+        edit: "Edit",
+        del: "Delete"
+    },
+    kn: {
+        title: "ದೂರುಗಳ ನಿರ್ವಹಣೆ",
+        name: "ಹೆಸರು",
+        type: "ದೂರು ಪ್ರಕಾರ",
+        desc: "ವಿವರಣೆ",
+        add: "ದೂರು ಸಲ್ಲಿಸಿ",
+        table: {
+            id: "ಐಡಿ",
+            name: "ಹೆಸರು",
+            type: "ಪ್ರಕಾರ",
+            desc: "ವಿವರಣೆ",
+            status: "ಸ್ಥಿತಿ",
+            action: "ಕ್ರಿಯೆ"
+        },
+        edit: "ತಿದ್ದು",
+        del: "ಅಳಿಸಿ"
+    }
+};
+
+function setText(id, text) {
+    const el = document.getElementById(id);
+    if (el) el.innerText = text;
+}
+
+function setLanguage(lang) {
+    setText("pageTitle", langData[lang].title);
+    setText("lblName", langData[lang].name);
+    setText("lblType", langData[lang].type);
+    setText("lblDesc", langData[lang].desc);
+    setText("addBtn", langData[lang].add);
+
+    setText("thId", langData[lang].table.id);
+    setText("thName", langData[lang].table.name);
+    setText("thType", langData[lang].table.type);
+    setText("thDesc", langData[lang].table.desc);
+    setText("thStatus", langData[lang].table.status);
+    setText("thAction", langData[lang].table.action);
+
+    document.querySelectorAll(".editBtn").forEach(b => b.innerText = langData[lang].edit);
+    document.querySelectorAll(".deleteBtn").forEach(b => b.innerText = langData[lang].del);
+}
+</script>
+
+</body>
+</html>

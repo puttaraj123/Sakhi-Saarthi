@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Complaint Details | SakhiSaarthi</title>
+   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+<body>
+
+<header>
+    <h1 id="title">SakhiSaarthi</h1>
+    <p id="subtitle">Complaint Details</p>
+</header>
+
+<nav>
+    <a href="admin-dashboard.html" id="navDashboard">Dashboard</a>
+    <a href="admin-complaints.html" id="navComplaints">Complaints</a>
+    <a href="#" id="navSchemes">Schemes</a>
+    <a href="#" id="navAnganwadi">Anganwadi</a>
+    <a href="admin.html" id="navLogout">Logout</a>
+
+    <button onclick="setLanguage('en')">English</button>
+    <button onclick="setLanguage('kn')">ಕನ್ನಡ</button>
+</nav>
+
+<section class="hero">
+    <h2 id="pageTitle">Complaint Information</h2>
+    <p id="pageDesc">
+        View complaint details and update the current status.
+    </p>
+</section>
+
+<!-- COMPLAINT DETAILS -->
+<section class="hero">
+    <table border="1" width="100%" cellpadding="10">
+        <tr>
+            <th id="lblId">Complaint ID</th>
+            <td>101</td>
+        </tr>
+        <tr>
+            <th id="lblType">Complaint Type</th>
+            <td id="typeText">Women Safety</td>
+        </tr>
+        <tr>
+            <th id="lblDesc">Description</th>
+            <td>Domestic violence reported in rural area</td>
+        </tr>
+        <tr>
+            <th id="lblDate">Date Submitted</th>
+            <td>10-02-2026</td>
+        </tr>
+        <tr>
+            <th id="lblStatus">Current Status</th>
+            <td>
+                <select>
+                    <option>Pending</option>
+                    <option>In Progress</option>
+                    <option>Resolved</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <th id="lblRemarks">Admin Remarks</th>
+            <td>
+                <textarea rows="4" placeholder="Enter remarks here..."></textarea>
+            </td>
+        </tr>
+    </table>
+
+    <br>
+    <button id="updateBtn">Update Status</button>
+</section>
+
+<footer>
+    <p>© 2026 SakhiSaarthi | Complaint View</p>
+</footer>
+
+<!-- LANGUAGE SCRIPT -->
+<script>
+const textData = {
+    en: {
+        subtitle: "Complaint Details",
+        pageTitle: "Complaint Information",
+        pageDesc: "View complaint details and update the current status.",
+
+        nav: {
+            dashboard: "Dashboard",
+            complaints: "Complaints",
+            schemes: "Schemes",
+            anganwadi: "Anganwadi",
+            logout: "Logout"
+        },
+
+        labels: {
+            id: "Complaint ID",
+            type: "Complaint Type",
+            desc: "Description",
+            date: "Date Submitted",
+            status: "Current Status",
+            remarks: "Admin Remarks",
+            btn: "Update Status"
+        },
+
+        types: {
+            women: "Women Safety"
+        }
+    },
+
+    kn: {
+        subtitle: "ದೂರು ವಿವರಗಳು",
+        pageTitle: "ದೂರು ಮಾಹಿತಿ",
+        pageDesc: "ದೂರು ವಿವರಗಳನ್ನು ವೀಕ್ಷಿಸಿ ಮತ್ತು ಪ್ರಸ್ತುತ ಸ್ಥಿತಿಯನ್ನು ನವೀಕರಿಸಿ.",
+
+        nav: {
+            dashboard: "ಡ್ಯಾಶ್‌ಬೋರ್ಡ್",
+            complaints: "ದೂರುಗಳು",
+            schemes: "ಯೋಜನೆಗಳು",
+            anganwadi:

@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Child Nutrition & Health Information</title>
+  <style>/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* BODY */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #F4E1C1;
+    color: #333;
+    text-align: center;
+}
+
+/* HEADER */
+header {
+    background-color: #8E2C2C;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+header h1 {
+    font-size: 30px;
+}
+
+header p {
+    font-size: 16px;
+    margin-top: 5px;
+}
+
+/* NAVBAR */
+nav {
+    background-color: #D4AF37;
+    text-align: center;
+    padding: 10px;
+}
+
+nav a {
+    margin: 10px;
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+}
+
+nav button {
+    padding: 5px 10px;
+    margin-left: 10px;
+    background-color: #8E2C2C;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+nav button:hover {
+    background-color: #6f2222;
+}
+
+/* HERO SECTION */
+.hero {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.hero h2 {
+    margin-bottom: 10px;
+}
+
+/* CARDS */
+.cards {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.card {
+    background-color: white;
+    width: 25%;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+    text-align: center;
+}
+
+/* TABLES */
+table {
+    width: 90%;
+    margin: auto;
+    background-color: white;
+    border-collapse: collapse;
+}
+
+th {
+    background-color: #8E2C2C;
+    color: white;
+    padding: 10px;
+}
+
+td {
+    padding: 10px;
+    text-align: center;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* FORMS */
+form {
+    max-width: 400px;
+    margin: auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+label {
+    font-weight: bold;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+/* BUTTONS */
+button {
+    background-color: #8E2C2C;
+    color: white;
+    padding: 10px;
+    border: none;
+    width: 100%;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #6f2222;
+}
+
+/* FOOTER */
+footer {
+    background-color: #8E2C2C;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    margin-top: 20px;
+}
+</style>
+</head>
+<body>
+<h1 style="background: #D4AF37;">Sakhi saarthi</h1><br>
+<h1><img src="{{ url_for('static', filename='images/3B.webp') }}" alt="nutrition" width="200px" height="100px">Child Nutrition & Health Information</h1>
+
+<p>
+Proper nutrition and healthcare are essential for a child’s physical, mental,
+and emotional development. The Central and State Governments of India run many
+schemes to ensure children grow healthy, strong, and free from malnutrition.
+</p>
+
+<hr>
+
+<h2><img src="{{ url_for('static', filename='images/1B.webp') }}" alt="WCDS" width="100px" height="100px"> CENTRAL GOVERNMENT SCHEMES</h2>
+
+<h3>1️⃣ Integrated Child Development Services (ICDS)</h3>
+<p>
+ICDS is one of the most important child welfare schemes in India. It provides
+supplementary nutrition, regular health check-ups, immunization, referral
+services, and early childhood education to children below 6 years through
+Anganwadi centres. Pregnant and lactating mothers are also supported under this scheme.
+</p>
+<p><marquee>
+🔗 Official Link:
+<a href="https://wcd.nic.in/schemes/integrated-child-development-services-icds" target="_blank">
+https://wcd.nic.in/schemes/integrated-child-development-services-icds
+</a></marquee>
+</p>
+
+<hr>
+
+<h3>2️⃣ Mid-Day Meal Scheme / PM POSHAN</h3>
+<p>
+This scheme provides free, nutritious cooked meals to children studying in
+government and government-aided schools. The objective is to improve nutrition,
+increase school attendance, reduce dropouts, and enhance learning outcomes.
+</p>
+<p><marquee>
+🔗 Official Link:
+<a href="https://pmposhan.education.gov.in/" target="_blank">
+https://pmposhan.education.gov.in/
+</a></marquee>
+</p>
+
+<hr>
+
+<h3>3️⃣ Mission Indradhanush</h3>
+<p>
+Mission Indradhanush provides free vaccination to children against life-threatening
+diseases such as polio, measles, diphtheria, tuberculosis, hepatitis, and tetanus.
+This scheme ensures that no child is left unvaccinated.
+</p>
+<p><marquee>
+🔗 Official Link:
+<a href="https://www.nhp.gov.in/mission-indradhanush_pg" target="_blank">
+https://www.nhp.gov.in/mission-indradhanush_pg
+</a></marquee>
+</p>
+
+<hr>
+
+<h3>4️⃣ Rashtriya Bal Swasthya Karyakram (RBSK)</h3>
+<p>
+RBSK focuses on early identification and free treatment of diseases, deficiencies,
+and developmental delays in children from birth to 18 years. Health screening is
+conducted in Anganwadis and schools.
+</p>
+<p><marquee>
+🔗 Official Link:
+<a href="https://nhm.gov.in/index1.php?lang=1&level=3&sublinkid=1190&lid=583" target="_blank">
+https://nhm.gov.in/.../RBSK
+</a></marquee>
+</p>
+
+<hr>
+
+<h3>5️⃣ POSHAN Abhiyaan (National Nutrition Mission)</h3>
+<p>
+POSHAN Abhiyaan aims to reduce malnutrition, anemia, under-nutrition, and low
+birth weight among children, adolescent girls, pregnant women, and lactating
+mothers through nutrition awareness and monitoring.
+</p>
+<p><marquee>
+🔗 Official Link:
+<a href="https://poshanabhiyaan.gov.in/" target="_blank">
+https://poshanabhiyaan.gov.in/
+</a></marquee>
+</p>
+
+<hr>
+<br>
+<h2><img src="{{ url_for('static', filename='images/2B.png') }}" alt="WCDS" width="100px" height="100px"> KARNATAKA STATE GOVERNMENT SCHEMES</h2>
+
+<h3>6️⃣ Karnataka Anganwadi Nutrition Programme</h3>
+<p>
+The Karnataka Government provides nutritious food, eggs, milk, and health
+services to children below 6 years through Anganwadi centres. Growth monitoring
+and nutrition education are also provided.
+</p>
+<p><marquee>
+🔗 Official Link:
+<a href="https://dwcd.karnataka.gov.in/" target="_blank">
+https://dwcd.karnataka.gov.in/
+</a></marquee>
+</p>
+
+<hr>
+
+<h3>7️⃣ Ksheera Bhagya Scheme</h3>
+<p>
+Under the Ksheera Bhagya Scheme, free milk is provided to school children on
+school days to improve nutrition, strengthen bones, and prevent malnutrition
+and anemia.
+</p>
+<p><marquee>
+🔗 Official Link:
+<a href="https://schooleducation.karnataka.gov.in/437/ksheera-bhagya-yojana/en" target="_blank">
+https://schooleducation.karnataka.gov.in/437/ksheera-bhagya-yojana/en
+</a></marquee>
+</p>
+
+<hr>
+
+<h3>8️⃣ Anna Bhagya Scheme (Food Security Support)</h3>
+<p>
+Anna Bhagya provides subsidized or free food grains to low-income families.
+This ensures that children from poor households do not suffer from hunger and
+nutrition deficiency.
+</p>
+<p><marquee>
+🔗 Official Link:
+<a href="https://ahara.kar.nic.in/" target="_blank">
+https://ahara.kar.nic.in/
+</a></marquee>
+</p>
+
+<hr>
+
+<h3>9️⃣ Free Health Check-up & Vaccination (Karnataka)</h3>
+<p>
+The Karnataka Government conducts free health check-ups, vaccination drives,
+and nutrition monitoring through government hospitals, Primary Health Centres,
+and health camps.
+</p>
+<p><marquee>
+🔗 Official Link:
+<a href="https://karunadu.karnataka.gov.in/hfw/Pages/home.aspx" target="_blank">
+https://karunadu.karnataka.gov.in/hfw/
+</a></marquee>
+</p>
+
+<hr>
+
+<h3>🔟 School Health Programme</h3>
+<p>
+Doctors and health workers regularly visit schools to check children’s physical
+health, eyesight, dental health, mental well-being, and overall growth.
+</p>
+<p><marquee>
+🔗 Official Link:
+<a href="https://nhm.gov.in/index1.php?lang=1&level=3&sublinkid=822&lid=219" target="_blank">
+https://nhm.gov.in/.../School-Health-Programme
+</a></marquee>
+</p>
+
+<hr>
+<br>
+<h2>🍎 Why Child Nutrition & Health Is Important?</h2>
+<ul>
+  <li>Ensures proper physical and mental growth</li>
+  <li>Builds strong immunity against diseases</li>
+  <li>Improves concentration and academic performance</li>
+  <li>Reduces child mortality and malnutrition</li>
+</ul>
+
+<hr>
+<br>
+<h2>📞 Need Help or Emergency Support?</h2>
+<ul>
+  <li>Visit nearest Anganwadi Centre</li>
+  <li>Visit Government Hospital or PHC</li>
+  <li>
+    Childline Emergency:
+    <strong>1098</strong>
+    <a href="tel:1098">📞 Call Now</a>
+  </li>
+</ul>
+
+<hr>
+<br><br>
+<a href="child.html">⬅ Back to Children Dashboard</a>
+
+</body>
+</html>

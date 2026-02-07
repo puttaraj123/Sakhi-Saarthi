@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Complaints Management | SakhiSaarthi</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+
+</head>
+<body>
+
+<header>
+    <h1 id="title">SakhiSaarthi</h1>
+    <p id="subtitle">Complaints Management</p>
+</header>
+
+<nav>
+    <a href="admin-dashboard.html" id="navDashboard">Dashboard</a>
+    <a href="admin-complaints.html" id="navComplaints">Complaints</a>
+    <a href="#" id="navSchemes">Schemes</a>
+    <a href="#" id="navAnganwadi">Anganwadi</a>
+    <a href="admin.html" id="navLogout">Logout</a>
+
+    <button onclick="setLanguage('en')">English</button>
+    <button onclick="setLanguage('kn')">ಕನ್ನಡ</button>
+</nav>
+
+<section class="hero">
+    <h2 id="pageTitle">Complaints Management</h2>
+    <p id="pageDesc">
+        View, track, and update complaints submitted by women and child beneficiaries.
+    </p>
+</section>
+
+<!-- COMPLAINTS TABLE -->
+<section class="hero">
+    <table border="1" width="100%" cellpadding="10" cellspacing="0">
+        <thead>
+            <tr>
+                <th id="thId">ID</th>
+                <th id="thType">Type</th>
+                <th id="thDesc">Description</th>
+                <th id="thDate">Date</th>
+                <th id="thStatus">Status</th>
+                <th id="thAction">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>101</td>
+                <td id="type1">Women Safety</td>
+                <td>Domestic violence complaint</td>
+                <td>10-02-2026</td>
+                <td><span style="color:red;">Pending</span></td>
+                <td>
+                    <button>View</button>
+                    <button>Resolve</button>
+                </td>
+            </tr>
+
+            <tr>
+                <td>102</td>
+                <td id="type2">Child Welfare</td>
+                <td>Child labour reported</td>
+                <td>11-02-2026</td>
+                <td><span style="color:orange;">In Progress</span></td>
+                <td>
+                    <button>View</button>
+                    <button>Resolve</button>
+                </td>
+            </tr>
+
+            <tr>
+                <td>103</td>
+                <td id="type3">Scheme Issue</td>
+                <td>PMMVY payment delay</td>
+                <td>12-02-2026</td>
+                <td><span style="color:green;">Resolved</span></td>
+                <td>
+                    <button>View</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+<footer>
+    <p>© 2026 SakhiSaarthi | Complaints Panel</p>
+</footer>
+
+<!-- LANGUAGE SCRIPT -->
+<script>
+const textData = {
+    en: {
+        subtitle: "Complaints Management",
+        pageTitle: "Complaints Management",
+        pageDesc: "View, track, and update complaints submitted by women and child beneficiaries.",
+
+        nav: {
+            dashboard: "Dashboard",
+            complaints: "Complaints",
+            schemes: "Schemes",
+            anganwadi: "Anganwadi",
+            logout: "Logout"
+        },
+
+        table: {
+            id: "ID",
+            type: "Type",
+            desc: "Description",
+            date: "Date",
+            status: "Status",
+            action: "Action"
+        },
+
+        types: {
+            t1: "Women Safety",
+            t2: "Child Welfare",
+            t3: "Scheme Issue"
+        }
+    },
+
+    kn: {
+        subtitle: "ದೂರು ನಿರ್ವಹಣೆ",
+        pageTitle: "ದೂರು ನಿರ್ವಹಣೆ",
+        pageDesc: "ಮಹಿಳೆಯರು ಮತ್ತು ಮಕ್ಕಳಿಂದ ಸಲ್ಲಿಸಲಾದ ದೂರುಗಳನ್ನು ವೀಕ್ಷಿಸಿ, ಅನುಸರಿಸಿ ಮತ್ತು ನವೀಕರಿಸಿ.",
+
+        nav: {
+            dashboard: "ಡ್ಯಾಶ್‌ಬೋರ್ಡ್",
+            complaints: "ದೂರುಗಳು",
+            schemes: "ಯೋಜನೆಗಳು",
+            anganwadi: "ಅಂಗನವಾಡಿ",
+            logout: "ಲಾಗ್ ಔಟ್"
+        },
+
+        table: {
+            id: "ಐಡಿ",
+            type: "ವರ್ಗ",
+            desc: "ವಿವರಣೆ",
+            date: "ದಿನಾಂಕ",
+            status: "ಸ್ಥಿತಿ",
+            action: "ಕ್ರಿಯೆ"
+        },
+
+        types: {
+            t1: "ಮಹಿಳಾ ಸುರಕ್ಷತೆ",
+            t2: "ಮಕ್ಕಳ ಕಲ್ಯಾಣ",
+            t3: "ಯೋಜನೆ ಸಮಸ್ಯೆ"
+        }
+    }
+};
+
+function setLanguage(lang) {
+    document.getElementById("title").innerText =
+        lang === "kn" ? "ಸಖಿ ಸಾರಥಿ" : "SakhiSaarthi";
+
+    document.getElementById("subtitle").innerText = textData[lang].subtitle;
+    document.getElementById("pageTitle").innerText = textData[lang].pageTitle;
+    document.getElementById("pageDesc").innerText = textData[lang].pageDesc;
+
+    document.getElementById("navDashboard").innerText = textData[lang].nav.dashboard;
+    document.getElementById("navComplaints").innerText = textData[lang].nav.complaints;
+    document.getElementById("navSchemes").innerText = textData[lang].nav.schemes;
+    document.getElementById("navAnganwadi").innerText = textData[lang].nav.anganwadi;
+    document.getElementById("navLogout").innerText = textData[lang].nav.logout;
+
+    document.getElementById("thId").innerText = textData[lang].tabl

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Eligibility Checker</title>
+<style>
+  /* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* BODY */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #F4E1C1;
+    color: #333;
+}
+
+/* HEADER */
+header {
+    background-color: #8E2C2C;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+header h1 {
+    font-size: 30px;
+}
+
+header p {
+    font-size: 16px;
+    margin-top: 5px;
+}
+
+/* NAVBAR */
+nav {
+    background-color: #D4AF37;
+    text-align: center;
+    padding: 10px;
+}
+
+nav a {
+    margin: 10px;
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+}
+
+nav button {
+    padding: 5px 10px;
+    margin-left: 10px;
+    background-color: #8E2C2C;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+nav button:hover {
+    background-color: #6f2222;
+}
+
+/* HERO SECTION */
+.hero {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.hero h2 {
+    margin-bottom: 10px;
+}
+
+/* CARDS */
+.cards {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.card {
+    background-color: white;
+    width: 25%;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+    text-align: center;
+}
+
+/* TABLES */
+table {
+    width: 90%;
+    margin: auto;
+    background-color: white;
+    border-collapse: collapse;
+}
+
+th {
+    background-color: #8E2C2C;
+    color: white;
+    padding: 10px;
+}
+
+td {
+    padding: 10px;
+    text-align: center;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* FORMS */
+form {
+    max-width: 400px;
+    margin: auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+label {
+    font-weight: bold;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+/* BUTTONS */
+button {
+    background-color: #8E2C2C;
+    color: white;
+    padding: 10px;
+    border: none;
+    width: 100%;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #6f2222;
+}
+
+/* FOOTER */
+footer {
+    background-color: #8E2C2C;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    margin-top: 20px;
+}
+</style>
+</head>
+<body>
+  <br>
+  <br>
+
+<h1 style="text-align:center">Sakhi Saarthi</h1>
+<br>
+<br><h2 style="text-align:center">Women Scheme Eligibility Checker</h2>
+
+<form onsubmit="return checkEligibility()">
+
+  <label>Age:</label><br>
+  <input type="number" id="age" required><br><br>
+
+  <label>Annual Income (₹):</label><br>
+  <input type="number" id="income" required><br><br>
+
+  <label>Marital Status:</label><br>
+  <select id="marital" required>
+    <option value="">--Select--</option>
+    <option value="married">Married</option>
+    <option value="unmarried">Unmarried</option>
+  </select><br><br>
+
+  <label>Employment Status:</label><br>
+  <select id="employment" required>
+    <option value="">--Select--</option>
+    <option value="employed">Employed</option>
+    <option value="unemployed">Unemployed</option>
+  </select><br><br>
+
+  <label>State:</label><br>
+  <select id="state" required>
+    <option value="">--Select--</option>
+    <option value="karnataka">Karnataka</option>
+    <option value="other">Other State</option>
+  </select><br><br>
+
+  <button type="submit">Check Eligibility</button>
+
+</form>
+
+<hr>
+
+<h3 style="text-align:center">Eligible Schemes:</h3>
+<ul id="result"></ul>
+
+<script>
+function checkEligibility() {
+
+  const age = parseInt(document.getElementById("age").value);
+  const income = parseInt(document.getElementById("income").value);
+  const marital = document.getElementById("marital").value;
+  const employment = document.getElementById("employment").value;
+  const state = document.getElementById("state").value;
+
+  const result = document.getElementById("result");
+  result.innerHTML = "";
+
+  /* ================= CENTRAL GOVERNMENT SCHEMES ================= */
+
+  // Beti Bachao Beti Padhao
+  if (age >= 0) {
+    result.innerHTML += "<li>Beti Bachao Beti Padhao</li>";
+  }
+
+  // PM Matru Vandana Yojana
+  if (marital === "married" && age >= 19) {
+    result.innerHTML += "<li>Pradhan Mantri Matru Vandana Yojana</li>";
+  }
+
+  // Ujjwala Yojana
+  if (income <= 200000) {
+    result.innerHTML += "<li>Ujjwala Yojana</li>";
+  }
+
+  // Working Women Hostel
+  if (employment === "employed" && age >= 18) {
+    result.innerHTML += "<li>Working Women Hostel Scheme</li>";
+  }
+
+  /* ================= KARNATAKA STATE SCHEMES ================= */
+
+  if (state === "karnataka") {
+
+    // Gruha Lakshmi Scheme
+    if (marital === "married" && income <= 200000) {
+      result.innerHTML += "<li>Gruha Lakshmi Scheme (Karnataka)</li>";
+    }
+
+    // Shakti Scheme
+    result.innerHTML += "<li>Shakti Scheme – Free Bus Travel (Karnataka)</li>";
+
+    // Udyogini Scheme
+    if (employment === "unemployed" && age >= 18 && age <= 55) {
+      result.innerHTML += "<li>Udyogini Scheme (Karnataka)</li>";
+    }
+
+    // Bhagyalakshmi Scheme
+    if (age < 18) {
+      result.innerHTML += "<li>Bhagyalakshmi Scheme (Karnataka)</li>";
+    }
+  }
+
+  if (result.innerHTML === "") {
+    result.innerHTML = "<li>No schemes found based on given details</li>";
+  }
+
+  return false; // stop form reload
+}
+</script>
+
+</body>
+</html>

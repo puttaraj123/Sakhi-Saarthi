@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Login | SakhiSaarthi</title>
+
+<style>
+/* RESET */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #F4E1C1;
+    color: #333;
+}
+
+header {
+    background-color: #8E2C2C;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+nav {
+    background-color: #D4AF37;
+    text-align: center;
+    padding: 10px;
+}
+
+.hero {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+form {
+    max-width: 400px;
+    margin: auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+label { font-weight: bold; }
+
+input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+}
+
+button {
+    background-color: #8E2C2C;
+    color: white;
+    padding: 10px;
+    border: none;
+    width: 100%;
+    cursor: pointer;
+}
+
+button:hover { background-color: #6f2222; }
+
+footer {
+    background-color: #8E2C2C;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    margin-top: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1 id="title">SakhiSaarthi</h1>
+    <p id="subtitle">Admin Login</p>
+</header>
+
+<nav>
+    <button onclick="setLanguage('en')">English</button>
+    <button onclick="setLanguage('kn')">ಕನ್ನಡ</button>
+</nav>
+
+<section class="hero">
+    <h2 id="pageTitle">Administrator Login</h2>
+    <p id="pageDesc">
+        Authorized officials can log in to manage complaints, schemes, and welfare data.
+    </p>
+
+    <!-- 🔑 LOGIN FORM -->
+    <form onsubmit="return adminLogin(event)">
+        <label id="userLabel">Username</label>
+        <input type="text" id="username" placeholder="Enter username" required>
+
+        <label id="passLabel">Password</label>
+        <input type="password" id="password" placeholder="Enter password" required>
+
+        <button type="submit" id="loginBtn">Login</button>
+        <p id="error" style="color:red;"></p>
+    </form>
+</section>
+
+<footer>
+    <p>© 2026 SakhiSaarthi | Admin Panel</p>
+</footer>
+
+<!-- LOGIN SCRIPT -->
+<script>
+function adminLogin(event) {
+    event.preventDefault(); // stop refresh
+
+    // demo admin credentials
+    const ADMIN_USER = "admin";
+    const ADMIN_PASS = "admin123";
+
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+
+    if (username === ADMIN_USER && password === ADMIN_PASS) {
+        // ✅ REDIRECT TO ADMIN DASHBOARD
+        window.location.href = "admin-dashboard.html";
+    } else {
+        document.getElementById("error").innerText =
+            "Invalid username or password";
+    }
+
+    return false;
+}
+</script>
+
+<!-- LANGUAGE SCRIPT -->
+<script>
+const subtitles = {
+    en: "Admin Login",
+    kn: "ನಿರ್ವಹಣಾಧಿಕಾರಿ ಲಾಗಿನ್"
+};
+
+const pageTitles = {
+    en: "Administrator Login",
+    kn: "ನಿರ್ವಹಣಾಧಿಕಾರಿ ಪ್ರವೇಶ"
+};
+
+const pageDescs = {
+    en: "Authorized officials can log in to manage complaints, schemes, and welfare data.",
+    kn: "ಅಧಿಕೃತ ಅಧಿಕಾರಿಗಳು ದೂರುಗಳು, ಯೋಜನೆಗಳು ಮತ್ತು ಕಲ್ಯಾಣ ಮಾಹಿತಿಯನ್ನು ನಿರ್ವಹಿಸಲು ಲಾಗಿನ್ ಮಾಡಬಹುದು."
+};
+
+const labels = {
+    en: { user: "Username", pass: "Password", btn: "Login" },
+    kn: { user: "ಬಳಕೆದಾರ ಹೆಸರು", pass: "ಪಾಸ್‌ವರ್ಡ್", btn: "ಲಾಗಿನ್" }
+};
+
+function setLanguage(lang) {
+    document.getElementById("title").innerText =
+        lang === "kn" ? "ಸಖಿ ಸಾರಥಿ" : "SakhiSaarthi";
+
+    document.getElementById("subtitle").innerText = subtitles[lang];
+    document.getElementById("pageTitle").innerText = pageTitles[lang];
+    document.getElementById("pageDesc").innerText = pageDescs[lang];
+    document.getElementById("userLabel").innerText = labels[lang].user;
+    document.getElementById("passLabel").innerText = labels[lang].pass;
+    document.getElementById("loginBtn").innerText = labels[lang].btn;
+}
+</script>
+
+</body>
+</html>

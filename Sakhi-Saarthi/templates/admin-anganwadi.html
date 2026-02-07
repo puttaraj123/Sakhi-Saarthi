@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Anganwadi Add Test</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+<body>
+<h2 id="pageTitle">Anganwadi Management</h2>
+
+<button onclick="setLanguage('en')">English</button>
+<button onclick="setLanguage('kn')">ಕನ್ನಡ</button>
+
+<form method="POST" action="/anganwadi">
+
+    <label id="lblCenter">Center Name</label><br>
+    <input type="text" name="center_name"><br><br>
+
+    <label id="lblLocation">Location</label><br>
+    <input type="text" name="location"><br><br>
+
+    <label id="lblWorker">Worker Name</label><br>
+    <input type="text" name="worker_name"><br><br>
+
+    <label id="lblContact">Contact</label><br>
+    <input type="text" name="contact"><br><br>
+
+    <button type="submit" id="addBtn">Add</button>
+</form>
+
+<hr>
+
+<h3>Existing Centers</h3>
+
+<table border="1" cellpadding="8">
+    <tr>
+        <th>ID</th>
+        <th>Center</th>
+        <th>Location</th>
+        <th>Worker</th>
+        <th>Contact</th>
+        <th>Action</th>
+    </tr>
+
+    {% for c in centers %}
+    <tr>
+        <td>{{ c.id }}</td>
+        <td>{{ c.center_name }}</td>
+        <td>{{ c.location }}</td>
+        <td>{{ c.worker_name }}</td>
+        <td>{{ c.contact }}</td>
+        <td>
+            <a href="/edit_anganwadi/{{ c.id }}">Edit</a> |
+            <a href="/delete_anganwadi/{{ c.id }}"
+               onclick="return confirm('Are you sure?')">Delete</a>
+        </td>
+        
+    </tr>
+    {% endfor %}
+</table>
+
+<script>
+const langData = {
+    en: {
+        title: "Anganwadi Management",
+        center: "Center Name",
+        location: "Location",
+        worker: "Worker Name",
+        contact: "Contact",
+        add: "Add",
+        table: {
+            id: "ID",
+            center: "Center",
+            location: "Location",
+            worker: "Worker",
+            contact: "Contact",
+            action: "Action"
+        },
+        edit: "Edit",
+        del: "Delete"
+    },
+    kn: {
+        title: "ಅಂಗನವಾಡಿ ನಿರ್ವಹಣೆ",
+        center: "ಕೇಂದ್ರದ ಹೆಸರು",
+        location: "ಸ್ಥಳ",
+        worker: "ಕಾರ್ಯಕರ್ತೆ ಹೆಸರು",
+        contact: "ಸಂಪರ್ಕ ಸಂಖ್ಯೆ",
+        add: "ಸೇರಿಸಿ",
+        table: {
+            id: "ಐಡಿ",
+            center: "ಕೇಂದ್ರ",
+            location: "ಸ್ಥಳ",
+            worker: "ಕಾರ್ಯಕರ್ತೆ",
+            contact: "ಸಂಪರ್ಕ",
+            action: "ಕ್ರಿಯೆ"
+        },
+        edit: "ತಿದ್ದು",
+        del: "ಅಳಿಸಿ"
+    }
+};
+
+function setLanguage(lang) {
+    document.getElementById("pageTitle").innerText = langData[lang].title;
+    document.getElementById("lblCenter").innerText = langData[lang].center;
+    document.getElementById("lblLocation").innerText = langData[lang].location;
+    document.getElementById("lblWorker").innerText = langData[lang].worker;
+    document.getElementById("lblContact").innerText = langData[lang].contact;
+    document.getElementById("addBtn").innerText = langData[lang].add;
+
+    document.getElementById("thId").innerText = langData[lang].table.id;
+    document.getElementById("thCenter").innerText = langData[lang].table.center;
+    document.getElementById("thLocation").innerText = langData[lang].table.location;
+    document.getElementById("thWorker").innerText = langData[lang].table.worker;
+    document.getElementById("thContact").innerText = langData[lang].table.contact;
+    document.getElementById("thAction").innerText = langData[lang].table.action;
+
+    // Update all Edit/Delete buttons
+    document.querySelectorAll(".editBtn").forEach(btn => btn.innerText = langData[lang].edit);
+    document.querySelectorAll(".deleteBtn").forEach(btn => btn.innerText = langData[lang].del);
+}
+</script>
+
+</body>
+</html>

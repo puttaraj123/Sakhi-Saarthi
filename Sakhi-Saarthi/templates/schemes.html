@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Schemes Management | SakhiSaarthi</title>
+   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+   <style>/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* BODY */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #F4E1C1;
+    color: #333;
+}
+
+/* HEADER */
+header {
+    background-color: #8E2C2C;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+header h1 {
+    font-size: 30px;
+}
+
+header p {
+    font-size: 16px;
+    margin-top: 5px;
+}
+
+/* NAVBAR */
+nav {
+    background-color: #D4AF37;
+    text-align: center;
+    padding: 10px;
+}
+
+nav a {
+    margin: 10px;
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+}
+
+nav button {
+    padding: 5px 10px;
+    margin-left: 10px;
+    background-color: #8E2C2C;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+nav button:hover {
+    background-color: #6f2222;
+}
+
+/* HERO SECTION */
+.hero {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.hero h2 {
+    margin-bottom: 10px;
+}
+
+/* CARDS */
+.cards {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.card {
+    background-color: white;
+    width: 25%;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+    text-align: center;
+}
+
+/* TABLES */
+table {
+    width: 90%;
+    margin: auto;
+    background-color: white;
+    border-collapse: collapse;
+}
+
+th {
+    background-color: #8E2C2C;
+    color: white;
+    padding: 10px;
+}
+
+td {
+    padding: 10px;
+    text-align: center;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* FORMS */
+form {
+    max-width: 400px;
+    margin: auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+label {
+    font-weight: bold;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+/* BUTTONS */
+button {
+    background-color: #8E2C2C;
+    color: white;
+    padding: 10px;
+    border: none;
+    width: 100%;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #6f2222;
+}
+
+/* FOOTER */
+footer {
+    background-color: #8E2C2C;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    margin-top: 20px;
+}
+</style>
+</head>
+<body>
+
+<header>
+    <h1 id="title">SakhiSaarthi</h1>
+    <p id="subtitle">Schemes Management</p>
+</header>
+
+<nav>
+    <a href="/dashboard" id="navDashboard">Dashboard</a>
+    <a href="/complaints" id="navComplaints">Complaints</a>
+    <a href="/schemes" id="navSchemes">Schemes</a>
+    <a href="/anganwadi" id="navAnganwadi">Anganwadi</a>
+    <a href="/logout" id="navLogout">Logout</a>
+
+    <button onclick="setLanguage('en')">English</button>
+    <button onclick="setLanguage('kn')">ಕನ್ನಡ</button>
+</nav>
+
+<section class="hero">
+    <h2 id="pageTitle">Welfare Schemes</h2>
+    <p id="pageDesc">
+        Add, update, and manage welfare schemes for women and children.
+    </p>
+</section>
+
+<!-- 📋 SCHEMES TABLE (DYNAMIC FROM DB) -->
+<section class="hero">
+    <table border="1" width="100%" cellpadding="10" cellspacing="0">
+        <thead>
+            <tr>
+                <th id="thId">ID</th>
+                <th id="thName">Scheme Name</th>
+                <th id="thCategory">Category</th>
+                <th id="thBeneficiary">Beneficiary</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for scheme in schemes %}
+            <tr>
+                <td>{{ scheme.id }}</td>
+                <td>{{ scheme.name }}</td>
+                <td>{{ scheme.category }}</td>
+                <td>{{ scheme.beneficiary }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</section>
+
+<!-- ➕ ADD SCHEME FORM -->
+<section class="hero">
+    <h3 id="addTitle">Add New Scheme</h3>
+
+    <form method="POST" action="/schemes">
+
+        <label id="lblName">Scheme Name</label>
+        <input type="text" name="name" required>
+
+        <label id="lblCategory">Category</label>
+        <input type="text" name="category" required>
+
+        <label id="lblBeneficiary">Beneficiary</label>
+        <input type="text" name="beneficiary" required>
+
+        <button type="submit" id="addBtn">Add Scheme</button>
+    </form>
+</section>
+
+<footer>
+    <p>© 2026 SakhiSaarthi | Schemes Panel</p>
+</footer>
+
+<!-- 🌐 LANGUAGE SCRIPT -->
+<script>
+const textData = {
+    en: {
+        subtitle: "Schemes Management",
+        pageTitle: "Welfare Schemes",
+        pageDesc: "Add, update, and manage welfare schemes for women and children.",
+        nav: {
+            dashboard: "Dashboard",
+            complaints: "Complaints",
+            schemes: "Schemes",
+            anganwadi: "Anganwadi",
+            logout: "Logout"
+        },
+        table: {
+            id: "ID",
+            name: "Scheme Name",
+            category: "Category",
+            beneficiary: "Beneficiary"
+        },
+        form: {
+            addTitle: "Add New Scheme",
+            name: "Scheme Name",
+            category: "Category",
+            beneficiary: "Beneficiary",
+            btn: "Add Scheme"
+        }
+    },
+    kn: {
+        subtitle: "ಯೋಜನೆ ನಿರ್ವಹಣೆ",
+        pageTitle: "ಕಲ್ಯಾಣ ಯೋಜನೆಗಳು",
+        pageDesc: "ಮಹಿಳೆಯರು ಮತ್ತು ಮಕ್ಕಳಿಗಾಗಿ ಕಲ್ಯಾಣ ಯೋಜನೆಗಳನ್ನು ಸೇರಿಸಿ ಮತ್ತು ನಿರ್ವಹಿಸಿ.",
+        nav: {
+            dashboard: "ಡ್ಯಾಶ್‌ಬೋರ್ಡ್",
+            complaints: "ದೂರುಗಳು",
+            schemes: "ಯೋಜನೆಗಳು",
+            anganwadi: "ಅಂಗನವಾಡಿ",
+            logout: "ಲಾಗ್ ಔಟ್"
+        },
+        table: {
+            id: "ಐಡಿ",
+            name: "ಯೋಜನೆ ಹೆಸರು",
+            category: "ವರ್ಗ",
+            beneficiary: "ಲಾಭಪಡೆಯುವವರು"
+        },
+        form: {
+            addTitle: "ಹೊಸ ಯೋಜನೆ ಸೇರಿಸಿ",
+            name: "ಯೋಜನೆ ಹೆಸರು",
+            category: "ವರ್ಗ",
+            beneficiary: "ಲಾಭಪಡೆಯುವವರು",
+            btn: "ಯೋಜನೆ ಸೇರಿಸಿ"
+        }
+    }
+};
+
+function setLanguage(lang) {
+    document.getElementById("title").innerText =
+        lang === "kn" ? "ಸಖಿ ಸಾರಥಿ" : "SakhiSaarthi";
+
+    document.getElementById("subtitle").innerText = textData[lang].subtitle;
+    document.getElementById("pageTitle").innerText = textData[lang].pageTitle;
+    document.getElementById("pageDesc").innerText = textData[lang].pageDesc;
+
+    document.getElementById("navDashboard").innerText = textData[lang].nav.dashboard;
+    document.getElementById("navComplaints").innerText = textData[lang].nav.complaints;
+    document.getElementById("navSchemes").innerText = textData[lang].nav.schemes;
+    document.getElementById("navAnganwadi").innerText = textData[lang].nav.anganwadi;
+    document.getElementById("navLogout").innerText = textData[lang].nav.logout;
+
+    document.getElementById("thId").innerText = textData[lang].table.id;
+    document.getElementById("thName").innerText = textData[lang].table.name;
+    document.getElementById("thCategory").innerText = textData[lang].table.category;
+    document.getElementById("thBeneficiary").innerText = textData[lang].table.beneficiary;
+
+    document.getElementById("addTitle").innerText = textData[lang].form.addTitle;
+    document.getElementById("lblName").innerText = textData[lang].form.name;
+    document.getElementById("lblCategory").innerText = textData[lang].form.category;
+    document.getElementById("lblBeneficiary").innerText = textData[lang].form.beneficiary;
+    document.getElementById("addBtn").innerText = textData[lang].form.btn;
+}
+</script>
+
+</body>
+</html>

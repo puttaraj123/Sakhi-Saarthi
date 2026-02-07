@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Role Selection</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+<style>
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* BODY */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #F4E1C1;
+    color: #333;
+}
+
+/* HEADER */
+header {
+    background-color: #8E2C2C;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+header h1 {
+    font-size: 30px;
+}
+
+header p {
+    font-size: 16px;
+    margin-top: 5px;
+}
+
+/* NAVBAR */
+nav {
+    background-color: #D4AF37;
+    text-align: center;
+    padding: 10px;
+}
+
+nav a {
+    margin: 10px;
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+}
+
+nav button {
+    padding: 5px 10px;
+    margin-left: 10px;
+    background-color: #8E2C2C;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+nav button:hover {
+    background-color: #6f2222;
+}
+
+/* HERO SECTION */
+.hero {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+/* FORMS */
+form {
+    max-width: 400px;
+    margin: auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+}
+
+/* BUTTONS */
+button {
+    background-color: #8E2C2C;
+    color: white;
+    padding: 10px;
+    border: none;
+    width: 100%;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #6f2222;
+}
+
+/* FOOTER */
+footer {
+    background-color: #8E2C2C;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    margin-top: 20px;
+}
+</style>
+</head>
+
+<body>
+    <br>
+    <br>
+    <h1 style="text-align: center; background: #8E2C2C;"><img src="{{ url_for('static', filename='images/1A.webp') }}" alt="WCDS" width="100px" height="100px">
+   Sakhi-Saarthi   <img src="{{ url_for('static', filename='images/1B.webp')}}" alt="Gov of India" width="100px" height="100px"><br><br></h1>
+<h1 style="background:#D4AF37;"><marquee>an Integrated Women & Child Welfare Support Portal</marquee><br>
+</h1>
+<h5 style="text-align:center;">One Platform Every Support</h5>
+
+<br>
+<br>
+<br>
+<br>
+<h2 style="text-align:center;">Select Your Role</h2>
+
+<form onsubmit="return redirectUser()">
+  <select id="role" required>
+    <option value="">-- Select Role --</option>
+    <option value="women">Women</option>
+    <option value="child">Child</option>
+    <option value="anganawadi">Find Nearest Anganwadi</option>
+    <option value="img">want to see images</option>
+    <option value="admin">Admin</option>
+  </select>
+
+  <button type="submit">Submit</button>
+</form>
+
+<script>
+function redirectUser() {
+  const role = document.getElementById("role").value;
+
+  if (role === "women") {
+    window.location.href = "women.html";
+  } 
+  else if (role === "child") {
+    window.location.href = "child.html";
+  } 
+  else if (role === "anganawadi") {
+    window.location.href = "anganawadi.html";
+  }
+  else if (role==="img") {
+    window.location.href="img.html";
+  }
+  else if (role === "admin") {
+    window.location.href = "admin.html";
+  }
+
+  return false; // prevents refresh
+}
+</script>
+
+</body>
+</html>

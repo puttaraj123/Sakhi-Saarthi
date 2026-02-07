@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Anganwadi Information System</title>
+</head>
+<body>
+
+<h1>Anganwadi Information System</h1>
+
+<p>
+Anganwadi centres provide nutrition, health care, and early education
+to children below 6 years, pregnant women, and lactating mothers.
+</p>
+
+<hr>
+
+<h2>📍 Find Nearest Anganwadi Centre</h2>
+<p>
+Click the button below to find the nearest Anganwadi centre near your location.
+</p>
+
+<button onclick="findAnganwadi()">Find Nearest Anganwadi</button>
+
+<p id="status"></p>
+
+<hr>
+
+<h2>🏥 Services Provided by Anganwadi</h2>
+<ul>
+  <li>Supplementary nutrition</li>
+  <li>Health check-ups</li>
+  <li>Immunization support</li>
+  <li>Pre-school education</li>
+  <li>Nutrition & health education for mothers</li>
+</ul>
+
+<hr>
+
+<h2>🌐 Official Anganwadi & ICDS Links</h2>
+<ul>
+  <li>
+    Ministry of Women & Child Development (ICDS)  
+    <a href="https://wcd.nic.in/schemes/integrated-child-development-services-icds" target="_blank">
+      Visit
+    </a>
+  </li>
+  <li>
+    Karnataka Women & Child Development Department  
+    <a href="https://dwcd.karnataka.gov.in/" target="_blank">
+      Visit
+    </a>
+  </li>
+</ul>
+
+<hr>
+
+<a href="children_dashboard.html">⬅ Back to Children Dashboard</a>
+
+<script>
+function findAnganwadi() {
+  const status = document.getElementById("status");
+
+  if (!navigator.geolocation) {
+    status.innerText = "Geolocation is not supported by your browser.";
+    return;
+  }
+
+  status.innerText = "Fetching your location...";
+
+  navigator.geolocation.getCurrentPosition(
+    function(position) {
+      const lat = position.coords.latitude;
+      const lon = position.coords.longitude;
+
+      // Open Google Maps with Anganwadi search
+      const mapUrl =
+        `https://www.google.com/maps/search/Anganwadi+centre/@${lat},${lon},15z`;
+
+      window.open(mapUrl, "_blank");
+      status.innerText = "Opening nearest Anganwadi centres...";
+    },
+    function() {
+      status.innerText = "Location access denied. Please enable GPS.";
+    }
+  );
+}
+</script>
+
+</body>
+</html>

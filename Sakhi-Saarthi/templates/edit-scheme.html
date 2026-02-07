@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Scheme</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<h2>Edit Scheme</h2>
+
+<form method="POST">
+    <label>Scheme Name</label>
+    <input type="text" name="name" value="{{ scheme['name'] }}" required>
+
+    <label>Category</label>
+    <input type="text" name="category" value="{{ scheme['category'] }}" required>
+
+    <label>Beneficiary</label>
+    <input type="text" name="beneficiary" value="{{ scheme['beneficiary'] }}" required>
+
+    <button type="submit">Update Scheme</button>
+</form>
+
+<br>
+<a href="/schemes">⬅ Back</a>
+
+</body>
+</html>
